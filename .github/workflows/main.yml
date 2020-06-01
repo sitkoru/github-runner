@@ -15,6 +15,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          repository: docker.pkg.github.com/sitkoru/github-runner/runner
+          registry: docker.pkg.github.com
+          repository: sitkoru/github-runner/runner
           tag_with_ref: true
           tags: latest
