@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          repository: docker.pkg.github.com/sitkoru/github-runner/runner
+          tag_with_ref: true
+          tags: latest
