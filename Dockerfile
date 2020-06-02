@@ -14,6 +14,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libc6 libgcc1 libgssapi-krb5-2 libicu63 libssl1.1 libstdc++6  build-essential autoconf automake libtool pkg-config git unzip \
     curl libatomic1 libgflags-dev apt-utils apt-transport-https ca-certificates gnupg2 software-properties-common rsync openssh-client \
     google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf nodejs zlib1g \
+    php-cli php-gd php-gmp php-pgsql php-mysql php-soap php-zip php-xsl php-opcache php-bcmath php-mysqli php-exif php-intl php-redis \
     && cd /tmp \
     && mkdir grpc \
     && git clone --recursive -b ${GRPC_VERSION} https://github.com/grpc/grpc \
@@ -25,7 +26,7 @@ RUN apt-get update \
     && mkdir -p /opt/include/google/protobuf \
     && cp third_party/protobuf/src/google/protobuf/*.proto /opt/include/google/protobuf \
     && rm -rf /tmp/* \
-    && apt purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false build-essential autoconf libtool pkg-config unzip \
+    && apt purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false build-essential autoconf libtool pkg-config \
     && curl -sL https://dl.min.io/client/mc/release/linux-amd64/mc -o /usr/local/bin/mc && chmod +x /usr/local/bin/mc
 
 ENV \
@@ -43,3 +44,8 @@ RUN cd /tmp && curl -sL https://dotnet.microsoft.com/download/dotnet-core/script
     && chmod +x dotnet-install.sh \
     && ./dotnet-install.sh --version $DOTNET_VERSION --install-dir /usr/share/dotnet \
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+
+# Install Composer and plugins
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -- --filename=composer
+RUN composer global require "fxp/composer-asset-plugin:^1.4.2" --prefer-dist
+RUN composer global require "hirak/prestissimo:^0.3" --prefer-dist
