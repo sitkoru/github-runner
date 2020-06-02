@@ -14,7 +14,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libc6 libgcc1 libgssapi-krb5-2 libicu63 libssl1.1 libstdc++6  build-essential autoconf automake libtool pkg-config git unzip \
     curl libatomic1 libgflags-dev apt-utils apt-transport-https ca-certificates gnupg2 software-properties-common rsync openssh-client \
     google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf nodejs zlib1g \
-    php-cli php-gd php-gmp php-pgsql php-mysql php-soap php-zip php-xsl php-opcache php-bcmath php-mysqli php-exif php-intl php-redis \
+    php-cli php-gd php-gmp php-pgsql php-mysql php-soap php-zip php-xsl php-opcache php-bcmath php-mysqli php-exif php-intl php-redis php-curl \
     && cd /tmp \
     && mkdir grpc \
     && git clone --recursive -b ${GRPC_VERSION} https://github.com/grpc/grpc \
