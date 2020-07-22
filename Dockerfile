@@ -10,7 +10,7 @@ RUN curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key a
     && curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | bash -
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libc6 libgcc1 libgssapi-krb5-2 libicu63 libssl1.1 libstdc++6  build-essential autoconf automake libtool pkg-config git unzip \
+    && apt-get install -y --no-install-recommends libc6 libgcc1 libgssapi-krb5-2 libicu63 libssl1.1 libstdc++6 build-essential autoconf automake libtool pkg-config git unzip \
     curl libatomic1 libgflags-dev apt-utils apt-transport-https ca-certificates gnupg2 software-properties-common rsync openssh-client \
     google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf nodejs zlib1g \
     php-cli php-gd php-gmp php-pgsql php-mysql php-soap php-zip php-xsl php-opcache php-bcmath php-mysqli php-exif php-intl php-redis php-curl \
@@ -25,7 +25,7 @@ RUN apt-get update \
     && mkdir -p /opt/include/google/protobuf \
     && cp third_party/protobuf/src/google/protobuf/*.proto /opt/include/google/protobuf \
     && rm -rf /tmp/* \
-    && apt purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false build-essential autoconf libtool pkg-config \
+    && apt purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false software-properties-common \
     && curl -sL https://dl.min.io/client/mc/release/linux-amd64/mc -o /usr/local/bin/mc && chmod +x /usr/local/bin/mc
 
 # Install Composer and plugins
