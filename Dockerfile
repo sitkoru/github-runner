@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 
 USER root
 
-ENV GRPC_VERSION v1.30.x
+ENV GRPC_VERSION v1.31.x
 ENV NODE_VERSION 14.x
 
 RUN curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
