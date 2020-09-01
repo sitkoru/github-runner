@@ -33,4 +33,5 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 RUN composer global require "fxp/composer-asset-plugin:^1.4.2" --prefer-dist
 RUN composer global require "hirak/prestissimo:^0.3" --prefer-dist
 
-ENV PUPPETEER_EXECUTABLE_PATH "/usr/bin/google-chrome-stable"
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
