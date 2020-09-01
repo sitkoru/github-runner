@@ -32,3 +32,5 @@ RUN apt-get update \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -- --filename=composer
 RUN composer global require "fxp/composer-asset-plugin:^1.4.2" --prefer-dist
 RUN composer global require "hirak/prestissimo:^0.3" --prefer-dist
+
+ENV PUPPETEER_EXECUTABLE_PATH "/usr/bin/google-chrome-stable"
