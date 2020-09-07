@@ -10,8 +10,9 @@ RUN curl -fsSL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key a
 RUN apt-get update \
     && apt-get install -y build-essential autoconf libtool pkg-config wget git unzip libatomic1 libgflags-dev apt-utils apt-transport-https ca-certificates gnupg2 software-properties-common rsync openssh-client \
     && add-apt-repository "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" \
+    && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
     && curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | bash - \
-    && apt-get install -y --no-install-recommends libc6 libgcc1 libgssapi-krb5-2 libicu63 libssl1.1 libstdc++6 \
+    && apt-get install -y --no-install-recommends docker-ce-cli libc6 libgcc1 libgssapi-krb5-2 libicu63 libssl1.1 libstdc++6 \
     google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 nodejs zlib1g \
     php-cli php-gd php-gmp php-pgsql php-mysql php-soap php-zip php-xsl php-opcache php-bcmath php-mysqli php-exif php-intl php-redis php-curl php-mbstring \
     && cd /tmp \
